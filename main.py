@@ -16,8 +16,10 @@ def on_press(key):
                 mqtt_con.publish(
                     baseTopic, mqtt_message_constructor(buffer), qos=0)
                 buffer = ''
-        elif hasattr(key, 'char') and key.char is not None:
+        elif hasattr(key, 'char'):
             buffer += key.char
+        elif key == keyboard.Key.space:
+            buffer += ' '
     except Exception as e:
         print(f"Error: {e}")
 
